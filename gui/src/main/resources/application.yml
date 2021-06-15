@@ -1,0 +1,52 @@
+server:
+  port: 9444
+  ssl:
+    key-store: classpath:keystore/keystore.jks  #alternativ gui/src/main/resources/keystore/keystore.p12(.jks)
+    key-store-type: jks
+    key-store-password: password
+    key-alias: ssl
+    enabled: true
+
+spring:
+  mail:
+    host: smtp.mailtrap.io
+    port: 25
+    username: a9b82f7681044c
+    password: bf5e5877a8e23f
+  application:
+    name: Mail client (si-mailclient-jar)
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+        username: user
+        password: password
+
+security:
+  basic:
+    username: user
+    password: password
+    enabled: true
+  csrf:
+    enabled: false
+
+management:
+  server:
+    port: 9001
+    address: 127.0.0.1
+  endpoint:
+    shutdown:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: beans
+
+logging:
+  file:
+    name: classpath:logfile.txt
