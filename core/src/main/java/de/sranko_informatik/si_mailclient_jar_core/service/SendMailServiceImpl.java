@@ -24,7 +24,9 @@ public class SendMailServiceImpl implements SendMailService{
         MimeMessage msg = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(msg, true);
 
-        helper.setTo(mail.getRecipient());
+        helper.setTo(mail.getRecipients());
+        helper.setCc(mail.getRecipientsCC());
+        helper.setBcc(mail.getRecipientsBCC());
         helper.setFrom(mail.getFrom());
         helper.setSubject(mail.getSubject());
         if (mail.isHTML()){

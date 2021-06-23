@@ -1,25 +1,31 @@
 package de.sranko_informatik.si_mailclient_jar_core.model;
 
+import java.util.List;
+
 public class Mail {
     private String from;
     private String subject;
-    private String recipient;
+    private String[] recipients;
+    private String[] recipientsCC;
+    private String[] recipientsBCC;
     private MailResource[] attachments;
     private Message message;
 
     public Mail() {
     }
 
-    public Mail(String subject, String recipient, Message message) {
+    public Mail(String subject, String[]  recipients, Message message) {
         this.subject = subject;
-        this.recipient = recipient;
+        this.recipients = recipients;
         this.message = message;
     }
 
-    public Mail(String from, String subject, String recipient, MailResource[] attachments, Message message) {
+    public Mail(String from, String subject, String[]  recipients, String[]  recipientsCC, String[] recipientsBCC, MailResource[] attachments, Message message) {
         this.from = from;
         this.subject = subject;
-        this.recipient = recipient;
+        this.recipients = recipients;
+        this.recipientsCC = recipientsCC;
+        this.recipientsBCC = recipientsBCC;
         this.attachments = attachments;
         this.message = message;
     }
@@ -28,8 +34,8 @@ public class Mail {
         return subject;
     }
 
-    public String getRecipient() {
-        return recipient;
+    public String[]  getRecipients() {
+        return recipients;
     }
 
     public Message getMessage() {
@@ -40,8 +46,8 @@ public class Mail {
         this.subject = subject;
     }
 
-    public void setRecipient(String recipient) {
-        this.recipient = recipient;
+    public void setRecipients(String[]  recipients) {
+        this.recipients = recipients;
     }
 
     public void setMessage(Message message) {
@@ -68,13 +74,29 @@ public class Mail {
         this.attachments = attachments;
     }
 
+    public String[]  getRecipientsCC() {
+        return recipientsCC;
+    }
+
+    public void setRecipientsCC(String[]  recipientsCC) {
+        this.recipientsCC = recipientsCC;
+    }
+
+    public String[]  getRecipientsBCC() {
+        return recipientsBCC;
+    }
+
+    public void setRecipientsBCC(String[]  recipientsBCC) {
+        this.recipientsBCC = recipientsBCC;
+    }
+
     @Override
     public String toString() {
 
         return String.format("From: %s, Subject: %s, Recipient: %s, Attachments: %s, Message: %s",
                 this.getFrom(),
                 this.getSubject(),
-                this.getRecipient(),
+                this.getRecipients(),
                 this.getAttachments().length,
                 this.getMessage());
     }
