@@ -1,5 +1,6 @@
 package de.sranko_informatik.si_mailclient_jar_core.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Mail {
@@ -102,9 +103,9 @@ public class Mail {
                              "Message: %s",
                 (this.getFrom() != null) ? this.getFrom() : "(null)",
                 (this.getSubject() != null) ? this.getSubject() : "(null)",
-                (this.getRecipients() != null) ? this.getRecipients() : "(null)",
-                (this.getRecipientsCC() != null) ? this.getRecipientsCC() : "(null)",
-                (this.getRecipientsBCC() != null) ? this.getRecipientsBCC() : "(null)",
+                (this.getRecipients() != null) ? Arrays.toString(this.getRecipients()) : "(null)",
+                (this.getRecipientsCC() != null) ? Arrays.toString(this.getRecipientsCC()) : "(null)",
+                (this.getRecipientsBCC() != null) ? Arrays.toString(this.getRecipientsBCC()) : "(null)",
                 (this.getAttachments() != null) ? this.getAttachments().length : "(null)",
                 (this.getMessage() != null) ? this.getMessage() : "(null)");
     }

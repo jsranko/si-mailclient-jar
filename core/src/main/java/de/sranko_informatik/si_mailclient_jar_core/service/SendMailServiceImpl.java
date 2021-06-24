@@ -66,7 +66,7 @@ public class SendMailServiceImpl implements SendMailService{
         }
 
         javaMailSender.send(msg);
-        logger.info("Email successful send. ".concat(mail.toString()));
+        logger.debug("Email successful send. ".concat(mail.toString()));
     }
 
 }

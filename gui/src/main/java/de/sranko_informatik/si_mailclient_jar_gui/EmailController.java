@@ -39,8 +39,8 @@ public class EmailController {
             service.sendMail(mail);
         } catch (MessagingException e) {
             e.printStackTrace();
-            logger.debug("Fehler bei Mail-Versand.");
-            logger.debug(e.toString());
+            logger.error("Fehler bei Mail-Versand.");
+            logger.error(e.toString());
             return "Email send error";
         }
 
