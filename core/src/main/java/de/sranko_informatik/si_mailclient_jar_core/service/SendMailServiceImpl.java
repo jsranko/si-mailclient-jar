@@ -36,15 +36,19 @@ public class SendMailServiceImpl implements SendMailService{
         }
 
         // Add mail resources
-        for (MailResource res : mail.getMessage().getResources()) {
+        if (mail.getMessage().getResources() != null) {
+            for (MailResource res : mail.getMessage().getResources()) {
 
-            helper.addInline(res.getName(), res.getInputStreamResource(), res.getType());
+                helper.addInline(res.getName(), res.getInputStreamResource(), res.getType());
+            }
         }
 
         // Add mail attachments
-        for (MailResource res : mail.getAttachments()) {
+        if (mail.getAttachments() != null) {
+            for (MailResource res : mail.getAttachments()) {
 
-            helper.addAttachment(res.getName(), res.getInputStreamResource(), res.getType());
+                helper.addAttachment(res.getName(), res.getInputStreamResource(), res.getType());
+            }
         }
 
 
