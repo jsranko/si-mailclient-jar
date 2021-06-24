@@ -6,6 +6,11 @@ server:
     key-store-password: password
     key-alias: ssl
     enabled: true
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-stacktrace: on_param
+    include-exception: false
 
 spring:
   mail:

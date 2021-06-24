@@ -28,6 +28,12 @@ public class SendMailServiceImpl implements SendMailService{
         MimeMessage msg = javaMailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(msg, true);
 
+        if ((mail.getRecipients() == null) &
+                (mail.getRecipientsCC() == null) &
+                (mail.getRecipientsBCC() == null)) {
+            throw new BadMessageAttributeException("Recipients TO and CC and BCC not provided");
+        }
+
         if (mail.getRecipients() != null) {
             helper.setTo(mail.getRecipients());
         }
@@ -39,9 +45,13 @@ public class SendMailServiceImpl implements SendMailService{
         }
         if (mail.getFrom() != null) {
             helper.setFrom(mail.getFrom());
+        } else {
+            throw new BadMessageAttributeException("From not provided");
         }
         if (mail.getSubject() != null) {
             helper.setSubject(mail.getSubject());
+        } else {
+            throw new BadMessageAttributeException("Subject not provided");
         }
         if (mail.isHTML()){
             helper.setText(mail.getMessage().getText(), true);
@@ -66,7 +76,6 @@ public class SendMailServiceImpl implements SendMailService{
         }
 
         javaMailSender.send(msg);
-        logger.debug("Email successful send. ".concat(mail.toString()));
     }
 
 }
