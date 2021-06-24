@@ -93,11 +93,19 @@ public class Mail {
     @Override
     public String toString() {
 
-        return String.format("From: %s, Subject: %s, Recipient: %s, Attachments: %s, Message: %s",
-                this.getFrom(),
-                this.getSubject(),
-                this.getRecipients(),
-                this.getAttachments().length,
-                this.getMessage());
+        return String.format("From: %s, " +
+                             "Subject: %s, " +
+                             "Recipients: %s, " +
+                             "RecipientsCC: %s, " +
+                             "RecipientsBCC: %s, " +
+                             "Attachments: %s, " +
+                             "Message: %s",
+                (this.getFrom() != null) ? this.getFrom() : "(null)",
+                (this.getSubject() != null) ? this.getSubject() : "(null)",
+                (this.getRecipients() != null) ? this.getRecipients() : "(null)",
+                (this.getRecipientsCC() != null) ? this.getRecipientsCC() : "(null)",
+                (this.getRecipientsBCC() != null) ? this.getRecipientsBCC() : "(null)",
+                (this.getAttachments() != null) ? this.getAttachments().length : "(null)",
+                (this.getMessage() != null) ? this.getMessage() : "(null)");
     }
 }
