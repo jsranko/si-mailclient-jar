@@ -63,7 +63,9 @@ public class SendMailServiceImpl implements SendMailService{
         if (mail.getMessage().getResources() != null) {
             for (MailResource res : mail.getMessage().getResources()) {
 
-                helper.addInline(res.getName(), res.getInputStreamResource(), res.getType());
+                if (res.getData() != null) {
+                    helper.addInline(res.getName(), res.getInputStreamResource(), res.getType());
+                }
             }
         }
 
@@ -71,7 +73,9 @@ public class SendMailServiceImpl implements SendMailService{
         if (mail.getAttachments() != null) {
             for (MailResource res : mail.getAttachments()) {
 
-                helper.addAttachment(res.getName(), res.getInputStreamResource(), res.getType());
+                if (res.getData() != null) {
+                    helper.addAttachment(res.getName(), res.getInputStreamResource(), res.getType());
+                }
             }
         }
 
